@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>My HTML CSS JS App</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="img/logozvc.png">
+    <style>
+        .logo, .plano-logo {
+            height: 40px; /* ou o tamanho que preferir */
+            width: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logozvc.png" alt="ZVC Turbonet" style="height:40px;">
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">INÍCIO</a></li>
+            <li><a href="#">QUEM SOMOS</a></li>
+            <li><a href="#">MAPA DE COBERTURA</a></li>
+            <li><a href="#">TRABALHE CONOSCO</a></li>
+            <li><a href="#">CONTATO</a></li>
+            <li><button class="client-btn">WHATSAPP</button></li>
+        </ul>
+        <div class="close-menu" id="close-menu">&times;</div>
+        <a href="https://wa.me/SEUNUMERO" class="whatsapp-btn" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" alt="WhatsApp" />
+        </a>
+    </nav>
+    <section class="hero">
+        <div class="hero-badge">Provedor número 1 do estado de Rondônia.</div>
+        <h1>
+            Navegue, Conecte-se & <br>
+            Tenha a Internet dos <span class="highlight">Seus Sonhos</span>
+        </h1>
+        <p>Seu futuro digital começa aqui. Descubra planos sob medida, aproveite a melhor conexão e transforme sua experiência online com a qualidade e velocidade que você merece.</p>
+        <div class="hero-actions">
+            <button class="bnt">Ver Planos</button>
+            <button class="bnt-outline"><i class="ri-play-circle-line"></i>Área do Cliente</button>
+        </div>
+        <!-- Ícones flutuantes podem ser adicionados com <img> ou <i> -->
+    </section>
+    <!-- Adicione abaixo da seção principal na home -->
+    <section class="planos-empresariais">
+        <h2>Confira nossos planos empresariais</h2>
+        <div class="planos-cards">
+            <div class="plano-card">
+                <div class="plano-top">
+                    <span class="plano-mega">300</span>
+                    <span class="plano-label">Mega</span>
+                </div>
+                <div class="plano-info">
+                    IP FIXO | PRIORIDADE NO ATENDIMENTO | WIFI | SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
+                </div>
+                <div class="plano-mid">
+                    <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
+                    <span class="plano-apenas">Por apenas</span>
+                </div>
+                <div class="plano-preco">
+                    <span class="plano-preco-moeda">R$</span>
+                    <span class="plano-preco-valor">139</span>
+                    <span class="plano-preco-centavos">,90</span>
+                </div>
+                <div class="plano-nota">
+                    *Plano c/ fidelidade 12 meses.<br>
+                    *Sujeito a analise de crédito.
+                </div>
+                <button class="plano-btn">CONTRATAR</button>
+            </div>
+            <!-- Repita para os outros planos -->
+            <div class="plano-card">
+                <div class="plano-top">
+                    <span class="plano-mega">400</span>
+                    <span class="plano-label">Mega</span>
+                </div>
+                <div class="plano-info">
+                    IP FIXO | PRIORIDADE NO ATENDIMENTO | WIFI | SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
+                </div>
+                <div class="plano-mid">
+                    <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
+                    <span class="plano-apenas">Por apenas</span>
+                </div>
+                <div class="plano-preco">
+                    <span class="plano-preco-moeda">R$</span>
+                    <span class="plano-preco-valor">159</span>
+                    <span class="plano-preco-centavos">,90</span>
+                </div>
+                <div class="plano-nota">
+                    *Plano c/ fidelidade 12 meses.<br>
+                    *Sujeito a analise de crédito.
+                </div>
+                <button class="plano-btn">CONTRATAR</button>
+            </div>
+            <div class="plano-card">
+                <div class="plano-top">
+                    <span class="plano-mega">500</span>
+                    <span class="plano-label">Mega</span>
+                </div>
+                <div class="plano-info">
+                    IP FIXO | PRIORIDADE NO ATENDIMENTO | WIFI | SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
+                </div>
+                <div class="plano-mid">
+                    <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
+                    <span class="plano-apenas">Por apenas</span>
+                </div>
+                <div class="plano-preco">
+                    <span class="plano-preco-moeda">R$</span>
+                    <span class="plano-preco-valor">189</span>
+                    <span class="plano-preco-centavos">,90</span>
+                </div>
+                <div class="plano-nota">
+                    *Plano c/ fidelidade 12 meses.<br>
+                    *Sujeito a analise de crédito.
+                </div>
+                <button class="plano-btn">CONTRATAR</button>
+            </div>
+            <div class="plano-card">
+                <div class="plano-top">
+                    <span class="plano-mega">600</span>
+                    <span class="plano-label">Mega</span>
+                </div>
+                <div class="plano-info">
+                    IP FIXO, PRIORIDADE NO ATENDIMENTO, WIFI, SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
+                </div>
+                <div class="plano-mid">
+                   <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
+                    <span class="plano-apenas">Por apenas</span>
+                </div>
+                <div class="plano-preco">
+                    <span class="plano-preco-moeda">R$</span>
+                    <span class="plano-preco-valor">240</span>
+                    <span class="plano-preco-centavos">,00</span>
+                </div>
+                <div class="plano-nota">
+                    *Plano c/ fidelidade 12 meses.<br>
+                    *Sujeito a analise de crédito.
+                </div>
+                <button class="plano-btn">CONTRATAR</button>
+            </div>
+        </div>
+    </section>
+    <!-- Adicione este botão onde desejar na sua página HTML -->
+<button id="mute-btn" aria-label="Mutar/Desmutar"><i class="ri-volume-mute-line"></i></button>
+
+<!-- E adicione este script antes do </body> -->
+<script>
+document.getElementById('mute-btn').onclick = function() {
+    document.querySelectorAll('audio, video').forEach(function(media) {
+        media.muted = !media.muted;
+    });
+};
+</script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
