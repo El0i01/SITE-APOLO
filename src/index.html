@@ -9,7 +9,7 @@
     />
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <title>My HTML CSS JS App</title>
+    <title>ZVC Turbonet</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="img/logozvc.png">
     <style>
@@ -39,12 +39,12 @@
             <li><button class="client-btn">WHATSAPP</button></li>
         </ul>
         <div class="close-menu" id="close-menu">&times;</div>
-        <a href="https://wa.me/SEUNUMERO" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/6935354231" class="whatsapp-btn" target="_blank">
             <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" alt="WhatsApp" />
         </a>
     </nav>
     <section class="hero">
-        <div class="hero-badge">Provedor número 1 do estado de Rondônia.</div>
+        <div class="hero-badge">Provedor número 1° do estado de Rondônia.</div>
         <h1>
             Navegue, Conecte-se & <br>
             Tenha a Internet dos <span class="highlight">Seus Sonhos</span>
@@ -155,17 +155,103 @@
             </div>
         </div>
     </section>
+    <!-- Depois dos cards de planos -->
+    <section class="qualidade-comprovada">
+      <h2>Qualidade comprovada</h2>
+      <div class="qualidade-metricas">
+        <div>
+          <span class="qc-num">+3.000</span>
+          <span class="qc-label">Clientes atendidos</span>
+        </div>
+        <div>
+          <span class="qc-num">+7</span>
+          <span class="qc-label">Cidades atendidas em RO</span>
+        </div>
+        <div>
+          <span class="qc-num">+30</span>
+          <span class="qc-label">Colaboradores Diretos</span>
+        </div>
+        <div>
+          <span class="qc-num">+2.000</span>
+          <span class="qc-label">Quilômetros de fibra óptica</span>
+        </div>
+      </div>
+    </section>
     <!-- Adicione este botão onde desejar na sua página HTML -->
-<button id="mute-btn" aria-label="Mutar/Desmutar"><i class="ri-volume-mute-line"></i></button>
+</section>
+<section>
+ <div class="faq-container">
+    <h2 class="faq-title">Confira as perguntas frequentes sobre a ZVC Turbonet.</h2>
 
-<!-- E adicione este script antes do </body> -->
-<script>
-document.getElementById('mute-btn').onclick = function() {
-    document.querySelectorAll('audio, video').forEach(function(media) {
-        media.muted = !media.muted;
-    });
-};
-</script>
-    <script src="scripts/app.js"></script>
+    <details>
+      <summary>Os planos são 100% fibra óptica?</summary>
+      <div class="faq-content">
+        Sim! Todos os nossos planos utilizam tecnologia 100% fibra óptica, garantindo muito mais velocidade, estabilidade e qualidade na sua conexão.
+      </div>
+    </details>
+
+    <details>
+      <summary>Como realizo teste de velocidade?</summary>
+      <div class="faq-content">
+        Você pode realizar o teste acessando nosso link de Speed Test no site ou utilizando plataformas como Speedtest.net.
+      </div>
+    </details>
+
+    <details>
+      <summary>A ZVC Turbonet cobra taxa de instalação?</summary>
+      <div class="faq-content">
+        Não! A instalação é totalmente gratuita em todos os planos de fibra óptica da ZVC Turbonet. Você só começa a pagar a mensalidade após a ativação da internet.
+      </div>
+    </details>
+
+    <details>
+      <summary>Quanto tempo leva para realizar uma instalação?</summary>
+      <div class="faq-content">
+        O prazo médio é de até 48 horas após a contratação, dependendo da disponibilidade técnica na sua região.
+      </div>
+    </details>
+
+    <details>
+      <summary>Preciso comprar o equipamento/roteador?</summary>
+      <div class="faq-content">
+        Não! A ZVC Turbonet fornece o roteador em regime de comodato, sem custo adicional na mensalidade.
+      </div>
+    </details>
+  </div>
+</section>
+<footer>
+    <div class="footer-container">
+      <!-- Informações da empresa -->
+      <div class="footer-column">
+        <h4>Informações da Empresa</h4>
+        <p>CNPJ: 27.861.697/0001-41</p>
+        <p>Endereço: Rua Tucumã, 1826 - Setor 01, Ariquemes - RO</p>
+        <p>Contato: (69) 3535-4231</p>
+        <p>Email: contato@empresa.com</p>
+      </div>
+
+      <!-- Links úteis -->
+      <div class="footer-column">
+        <h4>Links Úteis</h4>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+
+      <!-- Redes sociais -->
+      <div class="footer-column">
+        <h4>Siga-nos</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 ZVC Turbonet - Todos os direitos reservados.
+    </div>
+  </footer>
 </body>
 </html>
