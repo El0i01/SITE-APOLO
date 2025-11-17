@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trabalhe Conosco</title>
+
+  <!-- Fonte simples -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles/style.css">
+
+  <style>
+    :root{
+      --bg: #f5f8ff;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --text:#0b2540;
+      --muted:#6b7280;
+    }
+
+    html,body{ height:100%; margin:0; font-family: 'Poppins', system-ui, Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+    .container{
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:22px;
+    }
+    header h1{
+      margin:0;
+      font-size:1.6rem;
+      font-weight:700;
+      letter-spacing:-0.3px;
+    }
+    header p{
+      margin:8px 0 0 0;
+      color:var(--muted);
+      font-size:0.98rem;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), #fbfdff);
+      border-radius:12px;
+      padding:22px;
+      box-shadow: 0 12px 30px rgba(11,22,45,0.06);
+      border:1px solid rgba(11,22,45,0.04);
+    }
+
+    h2{ margin-top:0; margin-bottom:12px; font-size:1.25rem; color:var(--text); }
+
+    form{
+      display:block;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+
+    label{
+      display:block;
+      font-size:0.78rem;
+      font-weight:600;
+      color:#344054;
+      margin-bottom:6px;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #e6e9f2;
+      font-size:0.95rem;
+      color:var(--text);
+      background:#fff;
+      box-sizing:border-box;
+    }
+
+    /* placeholder: tamanho e cor mais suaves para melhor aparência */
+    input::placeholder, textarea::placeholder {
+      color: #9aa0a6;
+      font-size: 0.9rem;
+      opacity: 1; /* consistente entre navegadores */
+    }
+    /* vendor prefixes para compatibilidade */
+    ::-webkit-input-placeholder { color:#9aa0a6; font-size:0.9rem; }
+    :-ms-input-placeholder { color:#9aa0a6; font-size:0.9rem; }
+    ::-ms-input-placeholder { color:#9aa0a6; font-size:0.9rem; }
+
+    textarea{ min-height:110px; resize:vertical; }
+
+    .muted { color:var(--muted); font-size:0.92rem; }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:flex-end;
+      margin-top:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 16px;
+      border-radius:8px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      font-size:0.95rem;
+    }
+
+    .btn-primary{
+      background: linear-gradient(90deg,var(--accent), #1d4ed8);
+      color:#fff;
+      box-shadow: 0 10px 28px rgba(37,99,235,0.12);
+    }
+
+    .btn-ghost{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(11,22,45,0.06);
+    }
+
+    .note{
+      font-size:0.9rem;
+      color:var(--muted);
+      margin-top:10px;
+    }
+
+    /* validation visuals */
+    .invalid { border-color:#ef4444 !important; box-shadow: 0 6px 18px rgba(239,68,68,0.06); }
+    .invalid-note { color:#ef4444; font-size:0.85rem; margin-top:6px; display:none; }
+
+    /* responsive */
+    @media (max-width:880px){
+      .grid{ grid-template-columns: 1fr; }
+      .actions{ justify-content:stretch; flex-direction:column-reverse; gap:8px; }
+      .actions .btn-primary{ width:100%; }
+    }
+    
+    /* Mobile refinements */
+    @media (max-width:600px){
+      .header-inner{ padding:8px 12px; gap:10px; }
+      .header-left img{ height:40px !important; }
+      .header-center p{ font-size:0.95rem; }
+      .header-right a{ display:block; font-size:0.95rem; }
+
+      /* empilha header em telas pequenas */
+      .page-header .header-inner{ flex-direction:column; align-items:center; text-align:center; }
+      .page-header .header-right{ margin-top:6px; }
+
+      /* reduzir paddings para caber melhor */
+      .container{ margin:18px auto; padding:14px; max-width:92%; }
+      .card{ padding:16px; border-radius:10px; }
+
+      /* campos e botões maiores para toque */
+      input[type="text"], input[type="email"], input[type="tel"], textarea, select { padding:14px 12px; font-size:1rem; }
+      .btn{ padding:12px 14px; font-size:1rem; }
+
+      /* largura total para ações */
+      .actions{ gap:10px; }
+
+      /* imagens e botão flutuante ajustados */
+      .whatsapp-btn img{ width:40px; height:40px; }
+    }
+
+    /* Medium screens (tablets) tweaks */
+    @media (min-width:601px) and (max-width:880px){
+      .container{ margin:26px auto; padding:18px; }
+      .header-inner{ padding:8px 16px; }
+      .header-center p{ font-size:1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header simples (conforme imagem anexa): logo | título/subtítulo | link voltar -->
+  <header class="page-header" role="banner">
+    <div class="header-inner" style="max-width:1100px;margin:18px auto;display:flex;align-items:center;gap:16px;padding:6px 18px;">
+      <div class="header-left" style="flex:0 0 auto;">
+        <img src="img/logozvc.png" alt="ZVC Turbonet" style="height:46px;display:block;">
+      </div>
+
+      <div class="header-center" style="flex:1 1 auto;text-align:center;">
+        <p style="margin:4px 0 0 0;color:#475569;font-size:0.98rem;">Junte-se à nossa equipe!</p>
+      </div>
+
+      <div class="header-right" style="flex:0 0 auto;">
+        <a href="index.html" class="back-link" style="color:#0b61d1;font-weight:700;text-decoration:none;">&larr; Voltar ao site</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <header>
+      <h1>ZVC Turbonet</h1>
+      <p>Somos uma empresa dedicada a entregar qualidade e inovação. Buscamos profissionais comprometidos, responsáveis e com vontade de crescer.</p>
+    </header>
+
+    <div class="card">
+      <h2>Trabalhe Conosco</h2>
+
+      <form id="jobForm" novalidate>
+        <div class="grid">
+          <div>
+            <label for="name">Nome Completo</label>
+            <input id="name" name="name" type="text" placeholder="Seu nome completo" required>
+            <div class="invalid-note" id="nameNote">Por favor informe seu nome.</div>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="seu@exemplo.com" >
+            <div class="invalid-note" id="emailNote">Informe um e-mail válido.</div>
+          </div>
+
+          <div>
+            <label for="phone">Telefone / WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="(69) 9xxxx-xxxx">
+          </div>
+
+          <div>
+            <label for="city">Cidade (opcional)</label>
+            <input id="city" name="city" type="text" placeholder="Sua cidade">
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" placeholder="Fale brevemente sobre sua experiência (opcional)"></textarea>
+        </div>
+
+        <div class="note">Ao clicar em "Enviar via WhatsApp" o WhatsApp abrirá com a mensagem pronta — você deverá confirmar o envio no aplicativo.</div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" onclick="location.href='index.html'">Voltar</button>
+          <button type="submit" class="btn btn-primary">Enviar via WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // Use o número existente do projeto (formato internacional sem sinais)
+      const WHATSAPP_NUMBER = '556935354231'; // +55 69 3535-4231
+
+      const form = document.getElementById('jobForm');
+      const nameEl = document.getElementById('name');
+      const emailEl = document.getElementById('email');
+
+      function validateEmail(email){
+        // Regex simples para validar e-mails comuns (aceita caracteres antes e depois do @ e pelo menos um domínio)
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function clearValidation(){
+        [nameEl, emailEl].forEach(el=>{
+          el.classList.remove('invalid');
+          const note = document.getElementById(el.id + 'Note');
+          if(note) note.style.display = 'none';
+        });
+      }
+
+      function showInvalid(el, noteText){
+        el.classList.add('invalid');
+        const note = document.getElementById(el.id + 'Note');
+        if(note){ note.textContent = noteText; note.style.display = 'block'; }
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        clearValidation();
+
+        const name = nameEl.value.trim();
+        const email = emailEl.value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const city = document.getElementById('city').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        let ok = true;
+        if(!name){ showInvalid(nameEl, 'Por favor informe seu nome.'); ok = false; }
+        if(!email || !validateEmail(email)){ showInvalid(emailEl, 'E-mail inválido.'); ok = false; }
+
+        if(!ok){
+          // focus first invalid
+          const firstInvalid = document.querySelector('.invalid');
+          if(firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+  // Monta a mensagem em português com formatação para WhatsApp
+  // Usamos *negrito* e _itálico_, e preservamos quebras de linha — encodeURIComponent faz o escape correto
+  let text = '*Candidatura — Trabalhe Conosco*\n\n';
+  text += '*Nome:* ' + name + '\n';
+  text += '*E-mail:* ' + email + '\n';
+  if(phone) text += '*Telefone/WhatsApp:* ' + phone + '\n';
+  if(city) text += '*Cidade:* ' + city + '\n';
+  if(message) text += '\n*Mensagem do candidato:*\n' + message + '\n';
+  text += '\n_Enviado via site ZVC Turbonet_';
+
+  const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
+
+        // Abre o WhatsApp (web ou app) em nova aba
+        window.open(waUrl, '_blank');
+      });
+    })();
+  </script>
+  <!-- Floating WhatsApp button (padronizado) -->
+  <a href="https://wa.me/6935354231" class="whatsapp-btn" target="_blank" aria-label="Abrir WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" alt="WhatsApp" />
+  </a>
+
+  <footer>
+    <div class="footer-container">
+      <!-- Informações da empresa -->
+      <div class="footer-column">
+        <h4>Informações da Empresa</h4>
+        <p>CNPJ: 27.861.697/0001-41</p>
+        <p>Endereço: Rua Tucumã, 1826 - Setor 01, Ariquemes - RO</p>
+        <p>Contato: (69) 3535-4231</p>
+        <p>Email: apolo@zvcturbonet.com.br</p>
+      </div>
+
+      <!-- Links úteis -->
+      <div class="footer-column">
+        <h4>Links Úteis</h4>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+
+      <!-- Redes sociais -->
+      <div class="footer-column">
+        <h4>Siga-nos</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 ZVC Turbonet - Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+  // Mobile menu toggle: abre/fecha o menu ao clicar no hamburguer
+  (function(){
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const closeMenu = document.getElementById('close-menu');
+
+    if(!menuToggle || !navLinks) return;
+
+    function openNav(){
+      navLinks.classList.add('open');
+      navLinks.setAttribute('aria-hidden','false');
+      menuToggle.setAttribute('aria-expanded','true');
+      if(closeMenu) closeMenu.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav(){
+      navLinks.classList.remove('open');
+      navLinks.setAttribute('aria-hidden','true');
+      menuToggle.setAttribute('aria-expanded','false');
+      if(closeMenu) closeMenu.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', function(e){
+      e.preventDefault();
+      if(navLinks.classList.contains('open')) closeNav(); else openNav();
+    });
+
+    if(closeMenu){
+      closeMenu.addEventListener('click', function(){ closeNav(); });
+    }
+
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', function(e){
+      try{ if(this.id === 'nav-quem-somos') { return; } }catch(err){}
+      closeNav();
+    }));
+
+    navLinks.setAttribute('aria-hidden','true');
+    menuToggle.setAttribute('aria-controls','nav-links');
+    menuToggle.setAttribute('aria-expanded','false');
+  })();
+  </script>
+
+  <script>
+  // Toggle panel script (Quem Somos)
+  (function(){
+    const btn = document.getElementById('nav-quem-somos');
+    const panel = document.getElementById('quem-somos');
+    const overlay = document.getElementById('panel-overlay');
+    if(!btn || !panel || !overlay) return;
+    const closeBtn = panel.querySelector('.close-quem');
+
+    function openPanel() {
+      panel.classList.add('open');
+      overlay.classList.add('visible');
+      panel.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-hidden', 'false');
+      panel.querySelector('button, a, input, textarea')?.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePanel() {
+      panel.classList.remove('open');
+      overlay.classList.remove('visible');
+      panel.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      btn.focus();
+    }
+
+    btn.addEventListener('click', function(e){ e.preventDefault(); openPanel(); });
+    closeBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && panel.classList.contains('open')) closePanel(); });
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Área do Cliente — ZVC Turbonet</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    /* Pequenos ajustes específicos para a área do cliente */
+    body { background: linear-gradient(180deg,#ffffff,#f7fbff); }
+    .client-wrapper{ max-width:1100px; margin: 24px auto; padding: 28px; }
+    /* centraliza o card de login no centro da página */
+    .client-grid{ display:block; max-width:640px; margin:36px auto; }
+    .login-card{ background:var(--card); border-radius:14px; padding:28px; box-shadow:0 30px 70px rgba(7,18,56,0.08); border:1px solid rgba(11,22,45,0.04); }
+    .client-logo img{ height:56px; display:block; margin: 0 auto 12px auto; }
+    .login-card h2{ margin: 6px 0 8px; font-size:1.5rem; color:var(--text-dark); text-align:center; }
+    .login-card .muted{ text-align:center; margin-bottom:18px; }
+    .field{ display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+    .field input{ padding:12px 14px; border-radius:10px; border:1px solid rgba(11,22,45,0.06); font-size:1rem; width:100%; }
+    .btn-login{ background: linear-gradient(90deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:12px 18px; border-radius:12px; font-weight:800; cursor:pointer; box-shadow:0 12px 30px rgba(37,99,235,0.12); }
+    .bnt-outline{ border:1px solid rgba(37,99,235,0.12); padding:10px 14px; border-radius:10px; background:transparent; color:var(--primary-blue); font-weight:700; }
+    .account-overview{ display:flex; gap:12px; flex-direction:column; }
+    .plan-item{ border-radius:10px; padding:12px; background:linear-gradient(180deg,#fff,#f6fbff); border:1px solid rgba(37,99,235,0.06); }
+    .muted{ color:var(--text-light); font-size:0.95rem; }
+  /* dashboard permanece oculto até o login (JS controla a visualização) */
+  .dashboard-card{ display:none; }
+  /* centraliza ações do formulário */
+  .login-actions{ display:flex; gap:12px; justify-content:center; margin-top:6px; }
+  .login-actions .bnt-outline{ padding:10px 14px; border-radius:10px; }
+
+    @media (max-width: 980px){ .client-grid{ max-width:92%; margin:28px auto; } }
+  </style>
+</head>
+<body>
+  <!-- nav removida conforme solicitado -->
+
+  <main class="client-wrapper">
+    <div class="client-grid">
+      <section class="login-card" id="loginArea">
+        <div class="client-logo"><img src="img/logozvc.png" alt="ZVC Turbonet"></div>
+        <h2>Área do Cliente</h2>
+        <p class="muted">Faça login para ver suas faturas, contratar serviços e abrir chamados.</p>
+
+        <form id="loginForm" autocomplete="on">
+          <div class="field">
+            <label for="clienteEmail">E-mail ou CPF/CNPJ</label>
+            <input id="clienteEmail" name="email" type="text" placeholder="seu@email.com" required />
+          </div>
+
+          <div class="field">
+            <label for="clienteSenha">Senha</label>
+            <input id="clienteSenha" name="senha" type="password" placeholder="••••••••" required />
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="checkbox" id="rememberMe" /> Lembrar-me
+            </label>
+            <a href="#" style="margin-left:auto;color:var(--primary-blue);font-weight:700;">Esqueci a senha</a>
+          </div>
+
+          <div class="login-actions">
+            <button type="submit" class="btn-login">Entrar</button>
+            <a href="index.html" class="bnt-outline">Voltar</a>
+          </div>
+
+          <div id="loginMsg" style="margin-top:12px;color:#b91c1c;display:none;"></div>
+        </form>
+
+        <hr style="margin:18px 0;opacity:.06;" />
+        <div class="muted">Ainda não tem conta? <a href="#" style="color:var(--primary-blue);font-weight:700;">Criar Cadastro</a></div>
+      </section>
+
+      <aside class="dashboard-card" id="dashboardArea" aria-live="polite" style="display:none;">
+        <h2>Bem-vindo, <span id="clienteName">Cliente</span></h2>
+        <div class="muted">Último login: <span id="lastLogin">—</span></div>
+
+        <div style="margin-top:16px;" class="account-overview">
+          <div class="plan-item">
+            <strong>Plano atual:</strong>
+            <div>400 Mega — R$ 159,90 / mês</div>
+          </div>
+
+          <div class="plan-item">
+            <strong>Fatura em aberto:</strong>
+            <div>R$ 0,00 — Nenhuma fatura em aberto</div>
+          </div>
+
+          <div class="plan-item">
+            <strong>Chamados recentes:</strong>
+            <div class="muted">Nenhum chamado nos últimos 30 dias</div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px;">
+            <button id="btnLogout" class="bnt-outline">Sair</button>
+            <a href="#" class="btn-login" style="background:linear-gradient(90deg,#10b981,#059669);">Abrir Chamado</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer style="margin-top:40px;">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Informações da Empresa</h4>
+        <p>CNPJ: 27.861.697/0001-41</p>
+        <p>Contato: (69) 3535-4231</p>
+        <p>Email: apolo@zvcturbonet.com.br</p>
+      </div>
+      <div class="footer-column">
+        <h4>Links</h4>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+      <div class="footer-column">
+        <h4>Siga-nos</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simples mock de autenticação local (para demonstração)
+    (function(){
+      const form = document.getElementById('loginForm');
+      const loginMsg = document.getElementById('loginMsg');
+      const dashboard = document.getElementById('dashboardArea');
+      const loginArea = document.getElementById('loginArea');
+      const clienteName = document.getElementById('clienteName');
+      const lastLogin = document.getElementById('lastLogin');
+      const btnLogout = document.getElementById('btnLogout');
+
+      function showDashboard(data){
+        loginArea.style.display = 'none';
+        dashboard.style.display = 'block';
+        clienteName.textContent = data.name || 'Cliente';
+        lastLogin.textContent = new Date().toLocaleString();
+      }
+
+      // restaurar sessão simples
+      try{
+        const saved = sessionStorage.getItem('clienteSession');
+        if(saved){
+          const parsed = JSON.parse(saved);
+          showDashboard(parsed);
+        }
+      }catch(e){}
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        loginMsg.style.display = 'none';
+        const email = document.getElementById('clienteEmail').value.trim();
+        const senha = document.getElementById('clienteSenha').value.trim();
+        const remember = document.getElementById('rememberMe').checked;
+
+        // validação mínima
+        if(!email || !senha){
+          loginMsg.textContent = 'Preencha os campos de e-mail e senha.';
+          loginMsg.style.display = 'block';
+          return;
+        }
+
+        // mock: se senha tiver mais de 3 chars, autenticamos
+        if(senha.length < 4){
+          loginMsg.textContent = 'Senha muito curta.';
+          loginMsg.style.display = 'block';
+          return;
+        }
+
+        const session = { name: email.split('@')[0] || email, email: email };
+        try{
+          sessionStorage.setItem('clienteSession', JSON.stringify(session));
+          if(remember) localStorage.setItem('clienteRemember', email);
+        }catch(e){}
+
+        showDashboard(session);
+      });
+
+      btnLogout.addEventListener('click', function(){
+        try{ sessionStorage.removeItem('clienteSession'); }catch(e){}
+        dashboard.style.display = 'none';
+        loginArea.style.display = 'block';
+      });
+
+      // preenche campo se usuário optou por lembrar
+      try{
+        const rem = localStorage.getItem('clienteRemember');
+        if(rem) document.getElementById('clienteEmail').value = rem;
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>

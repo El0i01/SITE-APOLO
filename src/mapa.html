@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa de Cobertura — ZVC Turbonet</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin="" />
+  <style>
+    body { background: linear-gradient(180deg,#ffffff,#f7fbff); }
+    .map-header{ max-width:1100px; margin:28px auto 8px; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .map-header-brand{ display:flex; align-items:center; gap:12px; }
+    .map-header-brand img{ height:46px; width:auto; display:block; }
+    .map-header-title h3{ font-size:1.25rem; margin:0; letter-spacing:0.2px; }
+    .map-header .muted{ color:var(--text-light); font-size:0.95rem; }
+    .map-wrapper{ max-width:1200px; margin:0 auto 48px; padding:0 16px; position:relative; }
+    /* Make map height fluid but constrained for large screens */
+    #map{ width:100%; height:clamp(360px, 60vh, 720px); border-radius:12px; box-shadow:0 18px 48px rgba(7,18,56,0.06); border:1px solid rgba(11,22,45,0.04); }
+  .map-legend{ background:rgba(255,255,255,0.98); padding:10px 14px; border-radius:10px; box-shadow:0 8px 30px rgba(7,18,56,0.06); font-size:0.95rem; display:inline-block; }
+    .back-link{ text-decoration:none; color:var(--primary-blue); font-weight:700; }
+
+    /* Controls above the map as a full-width list */
+    .map-controls{
+      position:static; z-index:2200; width:100%;
+      background: linear-gradient(180deg,#ffffff,#fbfdff); border-radius:12px; box-shadow:0 8px 20px rgba(7,18,56,0.06);
+      border:1px solid rgba(11,22,45,0.04); overflow:hidden; margin-bottom:14px;
+    }
+    .map-controls .search{ padding:12px; border-bottom:1px solid rgba(11,22,45,0.04); }
+    .map-controls input{ width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(11,22,45,0.06); }
+    .map-controls .list{ max-height:320px; overflow:auto; padding:6px 10px; display:flex; flex-direction:column; gap:6px; }
+  .map-controls .city-item{ padding:10px 10px; border-radius:10px; cursor:pointer; display:flex; justify-content:space-between; gap:8px; align-items:center; background:transparent; }
+  .map-controls .city-item:hover{ background:linear-gradient(90deg, rgba(26,115,232,0.04), rgba(37,99,235,0.03)); }
+  .city-name{ font-weight:700; color:#071252; font-size:1rem; }
+  .city-sub{ font-size:0.82rem; color:var(--text-light); margin-top:4px; }
+
+    .leaflet-popup-content-wrapper{ border-radius:12px; box-shadow:0 10px 30px rgba(7,18,56,0.12); }
+    .leaflet-popup-content h4{ margin:0 0 6px; font-size:1rem; }
+
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+      #map { height: clamp(320px, 55vh, 560px); }
+      .map-header { padding: 14px 18px; }
+    }
+
+    @media (max-width: 800px) {
+        /* Stack header elements to avoid cramped layout */
+      .map-header { display: flex; flex-direction: column; align-items: center; gap:14px; padding: 18px 16px; text-align: center; }
+      /* stack brand items vertically on small screens */
+      .map-header-brand { display:flex; flex-direction: column; align-items: center; gap:10px; }
+      .map-header-brand img { height:36px; }
+      .map-header-title { display:block; margin-bottom:6px; }
+      .map-header-title h3 { font-size: 1.05rem; margin-top:2px; }
+      .map-header .muted { font-size: 0.92rem; line-height:1.3; }
+      .map-header-actions { width:100%; display:flex; justify-content:center; }
+      .back-link { display:inline-block; padding:10px 14px; border-radius:10px; background: #fff; box-shadow:0 8px 20px rgba(7,18,56,0.06); text-decoration:none; margin-top:6px; }
+      .back-link:active, .back-link:focus { transform: translateY(1px); }
+    }
+
+    @media (max-width:700px){
+      #map{ height: clamp(300px, 48vh, 480px); }
+      .map-controls{ position:static; width:100%; margin-bottom:12px; box-shadow:none; border:none; padding:8px 0; }
+      .map-controls .search { padding:8px 12px; }
+      .map-controls input{ padding:10px 12px; }
+      .map-controls .list{ max-height:220px; }
+      .map-wrapper{ padding:0 8px; }
+      .map-legend { margin:10px 8px; width: auto; display:block; }
+    }
+
+    /* History card styles */
+    .history-card{ background:linear-gradient(180deg,#ffffff,#fbfdff);padding:28px;border-radius:12px;border:1px solid rgba(11,22,45,0.04);box-shadow:0 12px 36px rgba(7,18,56,0.04); max-width:920px; margin:0 auto; text-align:center; }
+    .history-card h3{ margin:0 0 8px; font-size:1.5rem; color:var(--primary-blue); }
+    .history-divider{ width:60px; height:4px; background:linear-gradient(90deg,var(--primary-blue),var(--tech-blue)); margin:12px auto; border-radius:4px; }
+    .history-text{ max-width:820px; margin:12px auto; line-height:1.7; color:var(--text-light); font-size:1rem; }
+    @media (max-width:520px) {
+      .history-card{ padding:18px; }
+      .history-card h3{ font-size:1.2rem; }
+      .history-text{ font-size:0.92rem; line-height:1.5; }
+    }
+  </style>
+</head>
+<body>
+  <header class="map-header">
+    <div class="map-header-brand">
+      <a href="index.html" aria-label="Voltar à página inicial"><img src="img/logozvc.png" alt="ZVC" /></a>
+      <div class="map-header-title">
+        <h3>Mapa de Cobertura</h3>
+        <div class="muted">Veja onde atendemos com fibra óptica e os pontos de presença</div>
+      </div>
+    </div>
+    <div class="map-header-actions">
+      <a class="back-link" href="index.html">← Voltar ao site</a>
+    </div>
+  </header>
+
+  <main class="map-wrapper">
+    <div class="map-controls" id="mapControls" aria-hidden="false">
+      <div class="search"><input id="mapSearch" placeholder="Buscar cidade..." aria-label="Buscar cidade" /></div>
+      <div class="list" id="mapCityList"></div>
+    </div>
+    <div id="map" aria-label="Mapa de cobertura"></div>
+    <!-- central legend below the map -->
+    <div class="map-legend" id="mapLegend" style="margin:14px auto; max-width:1100px;">
+      <strong>Legenda</strong>
+      <div style="display:flex;gap:8px;margin-top:6px;align-items:center"><span style="width:12px;height:12px;background:#1a73e8;border-radius:50%;display:inline-block"></span> Ponto de Presença</div>
+    </div>
+  </main>
+
+  <!-- Our history section below the map -->
+  <section class="company-history" style="max-width:1100px;margin:0 auto 64px;padding:24px 16px;">
+    <div class="history-card">
+      <h3>Nossa História</h3>
+      <div class="history-divider" aria-hidden="true"></div>
+      <p class="muted history-text">A ZVC Turbonet nasceu com o propósito de conectar comunidades em Rondônia. Ao longo dos anos investimos em infraestrutura de fibra óptica, capacitação técnica e atendimento próximo ao cliente. Hoje atendemos diversas cidades com soluções residenciais e empresariais, mantendo compromisso com qualidade, transparência e inovação.</p>
+      <p class="muted history-text">Nossa trajetória é marcada por parcerias locais, expansão responsável e foco em tecnologia. Seguimos ampliando cobertura e serviços, sempre buscando melhorar a experiência digital da região.</p>
+    </div>
+  </section>
+
+  <footer style="margin-top:40px;">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Informações da Empresa</h4>
+        <p>CNPJ: 27.861.697/0001-41</p>
+        <p>Contato: (69) 3535-4231</p>
+        <p>Email: apolo@zvcturbonet.com.br</p>
+      </div>
+      <div class="footer-column">
+        <h4>Links</h4>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+      <div class="footer-column">
+        <h4>Siga-nos</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin=""></script>
+  <script>
+    // Inicializa o mapa centrado em Rondônia
+    const map = L.map('map', { zoomControl:true }).setView([-10.8333, -63.3333], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Pontos de exemplo — adapte conforme cobertura real
+    const pontos = [
+      { id: 'ariquemes', name: 'Ariquemes (Base)', coords:[-9.9060, -63.0366], info: 'Atendimento: Urbana + Rural' },
+      { id: 'itapua', name: 'Itapuã do Oeste', coords:[-9.1844277,-63.1890669], info: 'Atendimento: Urbana + Rural' },
+      { id: 'rio_crespo', name: 'Rio Crespo', coords:[-9.7064445,-62.9003739], info: 'Atendimento: Completa' },
+      { id: 'triunfo', name: 'Triunfo', coords:[-9.2805597,-63.4699119], info: 'Atendimento: Completa' },
+      { id: 'vila_samuel', name: 'Vila Samuel', coords:[-8.6587593,-63.4155306], info: 'Atendimento: Completa' },
+
+    ];
+
+    // agrupa marcadores para referência
+    const markers = {};
+
+    pontos.forEach(p => {
+      const marker = L.circleMarker(p.coords, {
+        radius:10,
+        fillColor:'#1a73e8',
+        color:'#ffffff',
+        weight:2,
+        fillOpacity:1
+      }).addTo(map);
+
+      const popupHtml = `<h4>${p.name}</h4><div class="muted">${p.info}</div>`;
+      marker.bindPopup(popupHtml, { minWidth: 180 });
+      markers[p.id] = marker;
+    });
+
+    // preencher a lista de cidades no painel lateral e ligar eventos
+    const cityList = document.getElementById('mapCityList');
+    const searchInput = document.getElementById('mapSearch');
+
+    function renderList(filter){
+      cityList.innerHTML = '';
+      pontos.filter(p => !filter || p.name.toLowerCase().includes(filter.toLowerCase())).forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'city-item';
+        el.innerHTML = `<div><div class="city-name">${p.name}</div><div class="city-sub">${p.info}</div></div><div style="font-size:0.9rem;color:var(--primary-blue)">Ver</div>`;
+        el.addEventListener('click', function(){
+          const m = markers[p.id];
+          if(m){
+            map.setView(p.coords, 12, { animate:true });
+            m.openPopup();
+          }
+        });
+        cityList.appendChild(el);
+      });
+    }
+
+    renderList();
+    searchInput.addEventListener('input', function(){ renderList(this.value); });
+
+    // Ajusta view para incluir todos os pontos
+    const group = new L.featureGroup(pontos.map(p=>L.marker(p.coords)));
+    map.fitBounds(group.getBounds().pad(0.18));
+  </script>
+</body>
+</html>

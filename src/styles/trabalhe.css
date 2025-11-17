@@ -1,0 +1,121 @@
+/* Page-specific overrides for Trabalhe Conosco
+   Scoped to #trabalhePage to avoid interfering with global styles.
+*/
+
+#trabalhePage {
+  --bg: #f7fbff;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-2: #1d4ed8;
+  font-family: Inter, 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+}
+
+/* Container adjustments */
+#trabalhePage .careers-header{ max-width:1180px; margin:28px auto; padding:10px 20px; }
+#trabalhePage .careers-main{ max-width:1180px; margin:0 auto 60px; padding:6px 18px 60px; display:grid; grid-template-columns: 1fr 420px; gap:28px; }
+
+/* Hero / benefits */
+#trabalhePage .careers-hero{ background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(249,250,255,0.9)); border-radius:10px; padding:20px; border:1px solid rgba(15,23,42,0.03); }
+#trabalhePage .careers-hero h3{ font-size:1.4rem; margin-bottom:6px; }
+#trabalhePage .careers-hero p{ color:var(--muted); margin-bottom:12px; }
+#trabalhePage .why-list{ display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; }
+#trabalhePage .why-item{ background:var(--card); border-radius:10px; padding:12px; display:flex; gap:12px; align-items:flex-start; border:1px solid rgba(15,23,42,0.04); }
+#trabalhePage .why-item i{ width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg, rgba(37,99,235,0.06), rgba(29,78,216,0.03)); color:var(--accent); }
+#trabalhePage .why-item strong{ font-size:1rem; margin-bottom:6px; }
+#trabalhePage .why-item p{ margin:0; color:var(--muted); font-size:0.93rem; }
+
+/* Form styles */
+#trabalhePage .apply-card{ background: var(--card); border-radius:10px; padding:16px; border:1px solid rgba(15,23,42,0.04); box-shadow:0 6px 18px rgba(11,22,45,0.03); }
+#trabalhePage .apply-card h3{ margin:0 0 8px; font-size:1.05rem; }
+#trabalhePage label{ display:block; font-weight:600; font-size:0.82rem; color:#334155; margin-bottom:6px; }
+
+#trabalhePage input[type=text],
+#trabalhePage input[type=email],
+#trabalhePage input[type=tel],
+#trabalhePage select,
+#trabalhePage textarea{
+  width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e9f2; margin-bottom:10px; background:#fff; font-size:0.95rem; box-shadow:none;
+}
+#trabalhePage textarea{ min-height:110px; }
+#trabalhePage input::placeholder, #trabalhePage textarea::placeholder{ color:#98a0b3; }
+#trabalhePage input:focus, #trabalhePage textarea:focus, #trabalhePage select:focus{ outline:none; border-color:var(--accent); box-shadow: 0 6px 18px rgba(37,99,235,0.06); }
+
+#trabalhePage .file-input{ display:flex; gap:10px; align-items:center; }
+#trabalhePage .file-input .muted{ font-size:0.86rem; color:var(--muted); }
+
+#trabalhePage .consent{ font-size:0.9rem; color:var(--muted); display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+#trabalhePage .consent input{ width:16px; height:16px; }
+
+#trabalhePage .btn-apply{ background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; border:none; padding:10px 14px; border-radius:8px; font-weight:700; cursor:pointer; width:100%; font-size:0.95rem; }
+#trabalhePage .btn-outline{ background:transparent; border:1px solid rgba(15,23,42,0.06); padding:8px 12px; border-radius:8px; color:#071252; }
+
+#trabalhePage .success{ background: #f0fdf4; color: #065f46; padding:9px 10px; border-radius:8px; border:1px solid rgba(6,95,70,0.06); margin-bottom:12px; font-size:0.95rem; }
+
+/* Validation helpers */
+#trabalhePage .invalid{ border-color: #e11d48 !important; box-shadow: 0 6px 18px rgba(225,29,72,0.06) !important; }
+#trabalhePage .invalid-note{ color:#e11d48; font-size:0.85rem; margin-top:-6px; margin-bottom:8px; }
+
+/* Responsive */
+@media (max-width: 980px){
+  #trabalhePage .careers-main{ grid-template-columns:1fr; padding:8px 14px 30px; }
+  #trabalhePage .why-list{ grid-template-columns:1fr; }
+  #trabalhePage .form-row{ flex-direction:column; }
+}
+
+/* Small visual polish to align with reference spacing */
+#trabalhePage .careers-hero{ padding:18px; }
+#trabalhePage .why-item{ padding:10px; }
+#trabalhePage .apply-card{ padding:14px; }
+
+/* Compact form variant to match reference screenshot */
+#trabalhePage label { font-size: 12px; text-transform: none; color: #44506b; margin-bottom:6px; }
+#trabalhePage input[type=text],
+#trabalhePage input[type=email],
+#trabalhePage input[type=tel],
+#trabalhePage select {
+  height: 40px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+}
+#trabalhePage textarea{ padding:10px; min-height: 100px; }
+
+#trabalhePage .form-row { gap: 12px; }
+
+/* action row: place primary to the right similar to reference */
+#trabalhePage .form-actions{ display:flex; gap:12px; align-items:center; justify-content:space-between; margin-top:8px; }
+#trabalhePage .form-actions .left{ color:var(--muted); font-size:0.92rem; }
+#trabalhePage .form-actions .right{ min-width:220px; display:flex; gap:8px; justify-content:flex-end; }
+
+/* compact primary and secondary */
+#trabalhePage .btn-apply{ padding:10px 16px; border-radius:8px; font-size:0.95rem; }
+#trabalhePage .btn-outline{ padding:8px 12px; }
+
+/* promo-like small input (e.g., promo code style) */
+#trabalhePage .promo-input{ display:flex; gap:8px; align-items:center; }
+#trabalhePage .promo-input input{ width:120px; height:36px; padding:6px 8px; border-radius:8px; }
+#trabalhePage .promo-ok{ background:#e6ffef; color:#065f46; padding:6px 10px; border-radius:8px; font-weight:700; border:1px solid rgba(6,95,70,0.06); }
+
+/* validation / error visual similar to screenshot */
+#trabalhePage .invalid { border-color: #f43f5e !important; box-shadow: 0 6px 18px rgba(244,63,94,0.06) !important; }
+#trabalhePage .invalid + .invalid-note{ display:block; }
+#trabalhePage .invalid-note{ display:none; color:#ef4444; font-size:0.82rem; margin-top:-6px; margin-bottom:8px; }
+
+/* small helper to show a red warning icon at end of the input (pure-css) */
+#trabalhePage .input-with-warning{ position:relative; }
+#trabalhePage .input-with-warning::after{ content: '\26A0'; position:absolute; right:10px; top:8px; color:#ef4444; font-size:16px; }
+
+
+/* End of trabalhe.css */
+
+/* Hero presentation styles */
+#trabalhePage .trabalhe-hero{ max-width:1180px; margin:18px auto; padding:22px; background: linear-gradient(180deg,#ffffff,#f8fbff); border-radius:12px; border:1px solid rgba(15,23,42,0.03); }
+#trabalhePage .hero-inner{ display:flex; gap:18px; align-items:center; }
+#trabalhePage .hero-logo{ width:86px; height:auto; display:block; }
+#trabalhePage .hero-text h1{ margin:0 0 6px; font-size:1.6rem; color:#071252; }
+#trabalhePage .hero-text p{ margin:0 0 12px; color:var(--muted); }
+#trabalhePage .hero-ctas{ display:flex; gap:12px; align-items:center; }
+#trabalhePage .btn-apply-ghost{ background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; font-weight:700; }
+#trabalhePage .btn-apply-ghost:hover{ opacity:0.95; }
+
+@media(max-width:980px){ #trabalhePage .hero-inner{ flex-direction:column; align-items:flex-start; } #trabalhePage .hero-logo{ width:72px; } }

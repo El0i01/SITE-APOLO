@@ -21,204 +21,529 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="img/logozvc.png" alt="ZVC Turbonet" style="height:40px;">
-        </div>
-        <div class="menu-toggle" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+  <nav class="navbar">
+    <!-- Mobile layout: logo à esquerda, menu hamburguer à direita -->
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="logo">
+      <img src="img/logozvc.png" alt="ZVC Turbonet" style="height:40px;">
+    </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="#">INÍCIO</a></li>
-            <li><a href="#">QUEM SOMOS</a></li>
-            <li><a href="#">MAPA DE COBERTURA</a></li>
-            <li><a href="#">TRABALHE CONOSCO</a></li>
-            <li><a href="#">CONTATO</a></li>
+            <li><a href="#" id="nav-quem-somos">QUEM SOMOS</a></li>
+            <li><a href="mapa.html">MAPA DE COBERTURA</a></li>
+            <li><a href="trabalhe.html">TRABALHE CONOSCO</a></li>
             <li><button class="client-btn">WHATSAPP</button></li>
         </ul>
-        <div class="close-menu" id="close-menu">&times;</div>
-        <a href="https://wa.me/6935354231" class="whatsapp-btn" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" alt="WhatsApp" />
-        </a>
-    </nav>
-    <section class="hero">
-        <div class="hero-badge">Provedor número 1° do estado de Rondônia.</div>
-        <h1>
-            Navegue, Conecte-se & <br>
+    <button class="close-menu" id="close-menu" type="button" aria-label="Fechar menu">&times;</button>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+    <!-- Overlay + Quem Somos Panel -->
+    <div id="panel-overlay" class="panel-overlay" aria-hidden="true"></div>
+
+    <aside id="quem-somos" class="quem-somos-panel" role="dialog" aria-modal="true" aria-hidden="true">
+      <button class="close-quem" aria-label="Fechar Quem Somos">&times;</button>
+      <div class="quem-somos-content">
+        <h2>Quem Somos</h2>
+        <p>
+          A ZVC Turbonet é uma provedora regional dedicada a oferecer conexões de internet de alta qualidade
+          para áreas urbanas e rurais de Rondônia. Com tecnologia de ponta, suporte 24h e foco no cliente,
+          trabalhamos para levar conectividade confiável e rápida para sua casa ou empresa.
+        </p>
+
+        <h3>Nossa missão</h3>
+        <p>
+          Conectar pessoas e negócios com internet estável, atendimento humano e soluções sob medida.
+        </p>
+
+        <h3>Valores</h3>
+        <ul>
+          <li>Compromisso com o cliente</li>
+          <li>Transparência</li>
+          <li>Inovação</li>
+          <li>Qualidade técnica</li>
+        </ul>
+
+        <p style="margin-top:18px;">
+          <strong>Contato:</strong> (69) 3535-4231 • apolo@zvcturbonet.com.br
+        </p>
+      </div>
+    </aside>
+
+    <!-- Hero Section 01 -->
+    <section class="hero01">
+      <div class="hero01-container">
+        <div class="hero01-content">
+          <div class="hero-tech-lines">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="hero-badge">Provedor número 1° do estado de Rondônia.</div>
+
+          <h1 class="hero01-title">
+            Navegue, Conecte-se & <br />
             Tenha a Internet dos <span class="highlight">Seus Sonhos</span>
-        </h1>
-        <p>Seu futuro digital começa aqui. Descubra planos sob medida, aproveite a melhor conexão e transforme sua experiência online com a qualidade e velocidade que você merece.</p>
-        <div class="hero-actions">
-            <button class="bnt">Ver Planos</button>
-            <button class="bnt-outline"><i class="ri-play-circle-line"></i>Área do Cliente</button>
+          </h1>
+
+          <p class="hero01-desc">
+            Seu futuro digital começa aqui. Descubra planos sob medida, aproveite a melhor conexão e transforme sua experiência online com a qualidade e velocidade que você merece.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#city-selector" class="bnt hero01-btn">
+              Ver Planos
+            </a>
+            <a href="https://ixc.zvcturbonet.com.br/" class="bnt-outline hero01-btn-outline">
+              <i class="ri-play-circle-line"></i> Área do Cliente
+            </a>
+          </div>
         </div>
-        <!-- Ícones flutuantes podem ser adicionados com <img> ou <i> -->
-    </section>
-    <!-- Adicione abaixo da seção principal na home -->
-    <section class="planos-empresariais">
-        <h2>Confira nossos planos empresariais</h2>
-        <div class="planos-cards">
-            <div class="plano-card">
-                <div class="plano-top">
-                    <span class="plano-mega">300</span>
-                    <span class="plano-label">Mega</span>
-                </div>
-                <div class="plano-info">
-                    IP FIXO | PRIORIDADE NO ATENDIMENTO | WIFI | SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
-                </div>
-                <div class="plano-mid">
-                    <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
-                    <span class="plano-apenas">Por apenas</span>
-                </div>
-                <div class="plano-preco">
-                    <span class="plano-preco-moeda">R$</span>
-                    <span class="plano-preco-valor">139</span>
-                    <span class="plano-preco-centavos">,90</span>
-                </div>
-                <div class="plano-nota">
-                    *Plano c/ fidelidade 12 meses.<br>
-                    *Sujeito a analise de crédito.
-                </div>
-                <button class="plano-btn">CONTRATAR</button>
-            </div>
-            <!-- Repita para os outros planos -->
-            <div class="plano-card">
-                <div class="plano-top">
-                    <span class="plano-mega">400</span>
-                    <span class="plano-label">Mega</span>
-                </div>
-                <div class="plano-info">
-                    IP FIXO | PRIORIDADE NO ATENDIMENTO | WIFI | SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
-                </div>
-                <div class="plano-mid">
-                    <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
-                    <span class="plano-apenas">Por apenas</span>
-                </div>
-                <div class="plano-preco">
-                    <span class="plano-preco-moeda">R$</span>
-                    <span class="plano-preco-valor">159</span>
-                    <span class="plano-preco-centavos">,90</span>
-                </div>
-                <div class="plano-nota">
-                    *Plano c/ fidelidade 12 meses.<br>
-                    *Sujeito a analise de crédito.
-                </div>
-                <button class="plano-btn">CONTRATAR</button>
-            </div>
-            <div class="plano-card">
-                <div class="plano-top">
-                    <span class="plano-mega">500</span>
-                    <span class="plano-label">Mega</span>
-                </div>
-                <div class="plano-info">
-                    IP FIXO | PRIORIDADE NO ATENDIMENTO | WIFI | SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
-                </div>
-                <div class="plano-mid">
-                    <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
-                    <span class="plano-apenas">Por apenas</span>
-                </div>
-                <div class="plano-preco">
-                    <span class="plano-preco-moeda">R$</span>
-                    <span class="plano-preco-valor">189</span>
-                    <span class="plano-preco-centavos">,90</span>
-                </div>
-                <div class="plano-nota">
-                    *Plano c/ fidelidade 12 meses.<br>
-                    *Sujeito a analise de crédito.
-                </div>
-                <button class="plano-btn">CONTRATAR</button>
-            </div>
-            <div class="plano-card">
-                <div class="plano-top">
-                    <span class="plano-mega">600</span>
-                    <span class="plano-label">Mega</span>
-                </div>
-                <div class="plano-info">
-                    IP FIXO, PRIORIDADE NO ATENDIMENTO, WIFI, SUPORTE 24 HORAS | LINHA TELEFÔNICA FIXA
-                </div>
-                <div class="plano-mid">
-                   <img src="img/logozvc.svg" alt="ZVC Turbonet" class="plano-logo">
-                    <span class="plano-apenas">Por apenas</span>
-                </div>
-                <div class="plano-preco">
-                    <span class="plano-preco-moeda">R$</span>
-                    <span class="plano-preco-valor">240</span>
-                    <span class="plano-preco-centavos">,00</span>
-                </div>
-                <div class="plano-nota">
-                    *Plano c/ fidelidade 12 meses.<br>
-                    *Sujeito a analise de crédito.
-                </div>
-                <button class="plano-btn">CONTRATAR</button>
-            </div>
-        </div>
-    </section>
-    <!-- Depois dos cards de planos -->
-    <section class="qualidade-comprovada">
-      <h2>Qualidade comprovada</h2>
-      <div class="qualidade-metricas">
-        <div>
-          <span class="qc-num">+3.000</span>
-          <span class="qc-label">Clientes atendidos</span>
-        </div>
-        <div>
-          <span class="qc-num">+7</span>
-          <span class="qc-label">Cidades atendidas em RO</span>
-        </div>
-        <div>
-          <span class="qc-num">+30</span>
-          <span class="qc-label">Colaboradores Diretos</span>
-        </div>
-        <div>
-          <span class="qc-num">+2.000</span>
-          <span class="qc-label">Quilômetros de fibra óptica</span>
+
+        <div class="hero01-image">
+          <img src="img/Innovation-bro.png" alt="Internet stack illustration" />
         </div>
       </div>
     </section>
-    <!-- Adicione este botão onde desejar na sua página HTML -->
-</section>
-<section>
- <div class="faq-container">
-    <h2 class="faq-title">Confira as perguntas frequentes sobre a ZVC Turbonet.</h2>
+    <section class="hero">
+        <div id="city-selector" class="city-selector">
+                <h2 class="selector-title">Selecione sua cidade</h2>
+                <p class="selector-subtitle">Atendemos área urbana e rural com a melhor tecnologia em fibra óptica</p>
+                
+                <div class="coverage-types">
+                    <button class="coverage-btn active" data-coverage="urbana">
+                        <i class="ri-building-line"></i> Área Urbana
+                    </button>
+                    <button class="coverage-btn" data-coverage="rural">
+                        <i class="ri-plant-line"></i> Área Rural
+                    </button>
+                </div>
 
-    <details>
-      <summary>Os planos são 100% fibra óptica?</summary>
-      <div class="faq-content">
-        Sim! Todos os nossos planos utilizam tecnologia 100% fibra óptica, garantindo muito mais velocidade, estabilidade e qualidade na sua conexão.
-      </div>
-    </details>
+                <div class="cities-grid">
+                    <div class="city-card" data-city="ariquemes">
+                        <i class="ri-building-4-line city-icon"></i>
+                        <div class="city-name">Ariquemes</div>
+                        <div class="city-coverage">
+                            <span class="coverage-badge">Sede</span>
+                            Urbana + Rural
+                        </div>
+                    </div>
 
-    <details>
-      <summary>Como realizo teste de velocidade?</summary>
-      <div class="faq-content">
-        Você pode realizar o teste acessando nosso link de Speed Test no site ou utilizando plataformas como Speedtest.net.
-      </div>
-    </details>
+                    <div class="city-card" data-city="porto-velho">
+                        <i class="ri-government-line city-icon"></i>
+                        <div class="city-name">Itapuã do Oeste</div>
+                        <div class="city-coverage">
+                            <span class="coverage-badge">Completa</span>
+                            Urbana + Rural
+                        </div>
+                    </div>
 
-    <details>
-      <summary>A ZVC Turbonet cobra taxa de instalação?</summary>
-      <div class="faq-content">
-        Não! A instalação é totalmente gratuita em todos os planos de fibra óptica da ZVC Turbonet. Você só começa a pagar a mensalidade após a ativação da internet.
-      </div>
-    </details>
+                    <div class="city-card" data-city="ji-parana">
+                        <i class="ri-community-line city-icon"></i>
+                        <div class="city-name">Rio Crespo</div>
+                        <div class="city-coverage">
+                            <span class="coverage-badge">Completa</span>
+                            Urbana + Rural
+                        </div>
+                    </div>
 
-    <details>
-      <summary>Quanto tempo leva para realizar uma instalação?</summary>
-      <div class="faq-content">
-        O prazo médio é de até 48 horas após a contratação, dependendo da disponibilidade técnica na sua região.
-      </div>
-    </details>
+                    <div class="city-card" data-city="cacoal">
+                        <i class="ri-seedling-line city-icon"></i>
+                        <div class="city-name">Triunfo</div>
+                        <div class="city-coverage">
+                            <span class="coverage-badge">Completa</span>
+                            Urbana + Rural
+                        </div>
+                    </div>
 
-    <details>
-      <summary>Preciso comprar o equipamento/roteador?</summary>
-      <div class="faq-content">
-        Não! A ZVC Turbonet fornece o roteador em regime de comodato, sem custo adicional na mensalidade.
-      </div>
-    </details>
+                    <div class="city-card" data-city="vilhena">
+                        <i class="ri-truck-line city-icon"></i>
+                        <div class="city-name">Vila Samuel</div>
+                        <div class="city-coverage">
+                            <span class="coverage-badge">Completa</span>
+                            Urbana + Rural
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+      </section>
+    <!-- fim seção a inserir -->
+
+
+<section class="plans-section" id="plans-section">
+        <div class="plans-container">
+            <div class="plans-header">
+                <div class="selected-city-display" id="selectedCityDisplay">
+                    <i class="ri-map-pin-line"></i>
+                    Selecione uma cidade acima
+                </div>
+                <h2 class="plans-title" style="color: #071252;">PLANOS DE INTERNET FIBRA ÓPTICA</h2>
+                <div class="plans-header-divider">
+                    <div class="line"></div>
+                    <i class="ri-wifi-line wifi-icon"></i>
+                    <div class="line"></div>
+                </div>
+        <p style="color: #717377; font-size: 1.1rem;">Tecnologia de ponta, suporte 24h e instalação gratuita</p>
+
+        <!-- Telefonia integrada: os cards foram movidos para a grade de planos abaixo -->
+            </div>
+
+            <div class="plans-grid">
+        <!-- Telefonia: cards integrados -->
+        <div class="plan-card">
+          <div class="plan-title">Telefonia Residencial</div>
+          <div class="plan-desc">Chamada local ilimitada · Tarifas reduzidas LD · Suporte 24/7</div>
+          <div class="plan-price">
+            <div class="price-value">R$ 49<span style="font-size: 1rem; font-weight:600;">/mês</span></div>
+          </div>
+          <button class="contract-btn" onclick="contractPlan('Telefonia Residencial','49,00')">Contratar</button>
+        </div>
+
+        <div class="plan-card popular">
+          <div class="popular-badge">Empresas</div>
+          <div class="plan-title">Telefonia Empresarial</div>
+          <div class="plan-desc">Linhas múltiplas · Atendimento prioritário · PBX e SLA</div>
+          <div class="plan-price">
+            <div class="price-value">R$ 129<span style="font-size: 1rem; font-weight:600;">/mês</span></div>
+          </div>
+          <button class="contract-btn" onclick="contractPlan('Telefonia Empresarial','129,00')">Contratar</button>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-title">Voz + Fibra (Combo)</div>
+          <div class="plan-desc">Pacote integrado com internet fibra · Desconto na contratação conjunta</div>
+          <div class="plan-price">
+            <div class="price-value">A partir de R$ 159<span style="font-size: 1rem; font-weight:600;">/mês</span></div>
+          </div>
+          <button class="contract-btn" onclick="contractPlan('Voz + Fibra','159,00')">Contratar</button>
+        </div>
+                <div class="plan-card">
+                    <div class="plan-speed">300</div>
+                    <div class="plan-unit">Mega</div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">IP Fixo Gratuito</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">WiFi 6 Incluído</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Suporte 24/7</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Instalação Gratuita</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-price">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 139<span style="font-size: 1.5rem;">,90</span></div>
+                        <div class="price-period">/mês</div>
+                    </div>
+
+                    <button class="contract-btn" onclick="contractPlan('300 Mega', '139,90')">
+                        Contratar Agora
+                    </button>
+                </div>
+
+                <div class="plan-card popular">
+                    <div class="popular-badge">Mais Popular</div>
+                    <div class="plan-speed">400</div>
+                    <div class="plan-unit">Mega</div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">IP Fixo Gratuito</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">WiFi 6 Pro Incluído</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Suporte Prioritário</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Instalação Premium</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-price">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 159<span style="font-size: 1.5rem;">,90</span></div>
+                        <div class="price-period">/mês</div>
+                    </div>
+
+                    <button class="contract-btn" onclick="contractPlan('400 Mega', '159,90')">
+                        Contratar Agora
+                    </button>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-speed">500</div>
+                    <div class="plan-unit">Mega</div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">IP Fixo Dedicado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">WiFi 6E Mesh</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Suporte VIP</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Configuração Avançada</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-price">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 189<span style="font-size: 1.5rem;">,90</span></div>
+                        <div class="price-period">/mês</div>
+                    </div>
+
+                    <button class="contract-btn" onclick="contractPlan('500 Mega', '189,90')">
+                        Contratar Agora
+                    </button>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-speed">600</div>
+                    <div class="plan-unit">Mega</div>
+                    
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">IP Fixo Empresarial</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Roteador Empresarial</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">Suporte Técnico Dedicado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="ri-check-line feature-icon"></i>
+                            <span class="feature-text">SLA Garantido</span>
+                        </div>
+                    </div>
+
+                    <div class="plan-price">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 240<span style="font-size: 1.5rem;">,90</span></div>
+                        <div class="price-period">/mês</div>
+                    </div>
+
+                    <button class="contract-btn" onclick="contractPlan('600 Mega', '240,90')">
+                        Contratar Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section>
+      <!-- FAQ Section -->
+<div class="faq-section">
+  <div class="faq-wrapper">
+     <div class="plans-header-divider">
+                    <div class="line"></div>
+                   <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+                    <div class="line"></div>
+                </div>
+    <h2 class="faq-title">Perguntas Frequentes</h2>
+    <p class="faq-subtitle">Tire suas dúvidas sobre nossos serviços, planos e atendimento.</p>
   </div>
-</section>
+</div>
+    <section class="faq-section">
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> Como proceder em casos de problema com a conexão?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            Oferecemos Suporte Técnico Online gratuito, disponível todos os dias da semana das 8h às 17h, sábados das 8h às 12h. Não atendemos aos domingos e feriados.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> Quais as formas de pagamento de mensalidades?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            Os pagamentos podem ser feitos através de boleto bancário, cartão de crédito e débito em conta.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> O tempo pode prejudicar o sinal da internet via rádio, como em dias de chuva, por exemplo?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            As tempestades geralmente provocam prejuízos, como quedas de árvores e interrupção de energia elétrica. Da mesma forma, o mau tempo também pode danificar equipamentos de transmissão do sinal de internet localizados em regiões vulneráveis às condições climáticas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> Minha internet vai ter velocidade reduzida quando atingir o limite do pacote/plano?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            Não. Nossos serviços não funcionam como um pacote de dados. Oferecemos uma conexão estável e com uso ilimitado, onde a velocidade permanece constante 24 horas por dia, 7 dias por semana e sem limite de download/upload.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> O que posso fazer se minha internet não está funcionando?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            Se ocorrer lentidão ou alguma outra dificuldade relacionada à conexão, desligue o equipamento da energia elétrica por cerca de 2 minutos. Se o problema persistir, entre em contato com o suporte técnico. Estamos disponíveis com profissionais capacitados para auxiliá-lo. Mantenha suas faturas sempre em dia.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> Existe fibra óptica em todas as ruas?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            Não. Porém, nossa rede de fibra óptica está em plena expansão. Caso tenha interesse neste serviço, preencha o formulário de contato e aguarde o retorno da nossa equipe comercial.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-icon"><i class="ri-question-line"></i></span>
+            <span class="faq-text"> Não recebi a fatura desse mês, como faço para pagá-la?</span>
+            <span class="faq-arrow"><i class="ri-arrow-down-s-line"></i></span>
+          </button>
+          <div class="faq-answer">
+            A 2ª via da fatura está disponível na Área do Cliente. Você também pode solicitar por e-mail, pelas redes sociais ou retirá-la na unidade da sua região. Não esqueça de manter seu cadastro sempre atualizado.
+          </div>
+        </div>
+      </div>
+    </section>
+</section></section>
+<!-- Promo modal (aparece ao entrar) -->
+<div id="promoOverlay" class="promo-overlay" aria-hidden="true">
+  <div class="promo-modal" role="dialog" aria-modal="true" aria-label="Promoção">
+    <button class="promo-close" id="promoClose" aria-label="Fechar">×</button>
+    <div class="promo-inner">
+      <div class="promo-top">
+        <div class="promo-brand">
+          <img src="img/logozvc.png" alt="logo" style="height:48px; filter:brightness(1.05);" />
+        </div>
+        <div style="display:flex; justify-content:center;"><span class="promo-badge">NOVIDADE!</span></div>
+        <h3 class="promo-title">Novos Planos<br/><span style="color:#ffb86b;">Ultra Rápidos!</span></h3>
+        <p class="promo-sub">Descubra as novas velocidades com 100% Fibra Óptica e benefícios exclusivos.</p>
+      </div>
+
+      <div class="promo-features">
+        <div class="promo-chip">Até 750 MEGA</div>
+        <div class="promo-chip">Wi‑Fi Grátis</div>
+        <div class="promo-chip">Instalação Gratuita</div>
+      </div>
+
+      <div class="promo-cta">
+        <button class="btn-primary" id="promoPrimary"><i class="ri-wifi-line"></i> Ver Planos</button>
+        <button class="btn-secondary" id="promoSecondary">Fechar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating WhatsApp button (moved out of nav for reliable fixed positioning) -->
+<a href="https://wa.me/6935354231" class="whatsapp-btn" target="_blank" aria-label="Abrir WhatsApp">
+  <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" alt="WhatsApp" />
+</a>
+
+<script>
+// Promo modal logic: mostra na entrada e armazena timestamp para não reaparecer por 24h
+(function(){
+  const overlay = document.getElementById('promoOverlay');
+  const closeBtn = document.getElementById('promoClose');
+  const secondary = document.getElementById('promoSecondary');
+  const primary = document.getElementById('promoPrimary');
+  const whats = document.getElementById('promoWhats');
+  const key = 'promoDismissedAt';
+  const HIDE_MS = 1000 * 60 * 60 * 24; // 24h
+
+  function isSuppressed(){
+    try{
+      const v = localStorage.getItem(key);
+      if(!v) return false;
+      const t = parseInt(v,10);
+      return (Date.now() - t) < HIDE_MS;
+    }catch(e){return false;}
+  }
+
+  function show(){ overlay.classList.add('show'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function hide(){ overlay.classList.remove('show'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+
+  function dismissAndHide(){ try{ localStorage.setItem(key, String(Date.now())); }catch(e){} hide(); }
+
+  // eventos
+  closeBtn.addEventListener('click', dismissAndHide);
+  secondary.addEventListener('click', dismissAndHide);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) dismissAndHide(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') dismissAndHide(); });
+  primary.addEventListener('click', function(){
+    try{ localStorage.setItem(key, String(Date.now())); }catch(e){}
+    const target = document.getElementById('city-selector');
+    hide();
+    if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+
+  if(whats){
+    whats.addEventListener('click', function(){
+      try{ localStorage.setItem(key, String(Date.now())); }catch(e){}
+      hide();
+    });
+  }
+
+  // mostrar se não suprimido (delay leve)
+  if(!isSuppressed()){
+    setTimeout(show, 700);
+  }
+})();
+</script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/carousel.js"></script>
 <footer>
     <div class="footer-container">
       <!-- Informações da empresa -->
@@ -227,7 +552,7 @@
         <p>CNPJ: 27.861.697/0001-41</p>
         <p>Endereço: Rua Tucumã, 1826 - Setor 01, Ariquemes - RO</p>
         <p>Contato: (69) 3535-4231</p>
-        <p>Email: contato@empresa.com</p>
+        <p>Email: apolo@zvcturbonet.com.br</p>
       </div>
 
       <!-- Links úteis -->
@@ -253,5 +578,98 @@
       © 2025 ZVC Turbonet - Todos os direitos reservados.
     </div>
   </footer>
+  <script>
+  // Toggle panel script
+  (function(){
+    const btn = document.getElementById('nav-quem-somos');
+    const panel = document.getElementById('quem-somos');
+    const overlay = document.getElementById('panel-overlay');
+    const closeBtn = panel.querySelector('.close-quem');
+
+    function openPanel() {
+      panel.classList.add('open');
+      overlay.classList.add('visible');
+      panel.setAttribute('aria-hidden', 'false');
+      overlay.setAttribute('aria-hidden', 'false');
+      // trap focus if desired (simple focus set)
+      panel.querySelector('button, a, input, textarea')?.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePanel() {
+      panel.classList.remove('open');
+      overlay.classList.remove('visible');
+      panel.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      btn.focus();
+    }
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      openPanel();
+    });
+
+    closeBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+  })();
+
+  // Cidade: mostrar planos apenas após seleção
+  (function(){
+    const cityCards = document.querySelectorAll('.city-card');
+    const plansSection = document.getElementById('plans-section');
+    const selectedCityDisplay = document.getElementById('selectedCityDisplay');
+
+    // Garante que a seção comece escondida (caso não tenha sido setada no HTML)
+    if(plansSection && !plansSection.classList.contains('hidden')){
+      plansSection.classList.add('hidden');
+    }
+
+    function onSelectCity(card){
+      // marca visual
+      cityCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+
+      // atualiza texto de cidade selecionada
+      const nameEl = card.querySelector('.city-name');
+      const cityName = nameEl ? nameEl.innerText.trim() : card.getAttribute('data-city') || 'Cidade selecionada';
+      if(selectedCityDisplay){
+        selectedCityDisplay.innerHTML = '<i class="ri-map-pin-line"></i> ' + cityName;
+      }
+
+      // mostra a seção de planos e foca (suave)
+      if(plansSection){
+        plansSection.classList.remove('hidden');
+        // scroll suave até planos
+        setTimeout(()=>{
+          plansSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }, 120);
+      }
+      // opcional: salvar última cidade no localStorage (pequena conveniência)
+      try{ localStorage.setItem('lastSelectedCity', cityName); }catch(e){}
+    }
+
+    cityCards.forEach(card => {
+      card.addEventListener('click', function(){ onSelectCity(card); });
+      card.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectCity(card); } });
+      // torna acessível via tab
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+    });
+
+    // restaura seleção anterior se houver
+    try{
+      const last = localStorage.getItem('lastSelectedCity');
+      if(last){
+        const match = Array.from(cityCards).find(c => c.querySelector('.city-name')?.innerText.trim() === last);
+        if(match) onSelectCity(match);
+      }
+    }catch(e){}
+  })();
+</script>
 </body>
 </html>
